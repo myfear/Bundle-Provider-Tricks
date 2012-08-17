@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package net.eisele.example.resourcebundletricks.bundles;
 
 import java.util.Locale;
@@ -22,8 +18,6 @@ public class MessageBundleProvider {
         FacesContext context = FacesContext.getCurrentInstance();
         Locale locale = context.getViewRoot().getLocale();
         return ResourceBundle.getBundle("Messages", locale);
-
-        //return msgBundle;
     }
 
     @Produces
