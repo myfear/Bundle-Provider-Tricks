@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <h:form>
+
+            <h:outputLabel value="${greeting.welcome}" /> <br/>
+
+            <h:outputLabel value="${greeting.personalizedGreeting}" /><br/>
+
+            <h:outputFormat value="#{msgs['welcome.name']}">
+                <f:param value="Markus" />
+            </h:outputFormat>
+            <br/>
+
+               <h:outputLabel value="#{db['welcome.db']}"/><br />
+            
+            
+            <h:panelGrid columns="2">
+                <h:outputLabel value="#{msgs['welcome.language']}"/><br />
+
+                <h:selectOneMenu value="#{languageSwitch.localeCode}" onchange="submit()"
+                                 valueChangeListener="#{languageSwitch.countryLocaleCodeChanged}">
+                    <f:selectItems value="#{languageSwitch.countriesInMap}" /> 
+                </h:selectOneMenu>
+
+            </h:panelGrid>
+
+
+        </h:form>
+
+
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+    </h:body>
+</html>
+
