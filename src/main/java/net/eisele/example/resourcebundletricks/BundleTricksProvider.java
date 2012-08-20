@@ -19,9 +19,11 @@ public class BundleTricksProvider extends HttpConfigurationProvider {
     @Override
     public Configuration getConfiguration(ServletContext context) {
         return ConfigurationBuilder.begin()
+                // Locale Switch
                 .addRule(Join.path("/{locale}/{page}.xhtml").to("/{page}.xhtml")
                 .where("page").matches(".*")
                 .where("locale").bindsTo(PhaseBinding.to(El.property("#{languageSwitch.localeCode}")).after(PhaseId.RESTORE_VIEW)))
+                // 404 Error Page
                 .addRule(Join.path("/404").to("/404.xhtml").perform(Response.setCode(404)));
 
 

@@ -66,21 +66,17 @@ public class ResourceEntity implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+        return id == null ? 0 : id.hashCode();
     }
 
     @Override
     public boolean equals(Object object) {
-        if (!(object instanceof ResourceEntity)) {
-            return false;
+        boolean result = object == this;
+        if (!result && object != null && this.getClass().isAssignableFrom(object.getClass())) {
+            result = this.id != null && ((ResourceEntity) object).id != null
+                    && this.id.equals(((ResourceEntity) object).id);
         }
-        ResourceEntity other = (ResourceEntity) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return result;
     }
 
     @Override

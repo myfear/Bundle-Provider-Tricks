@@ -4,40 +4,41 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title><h:outputText value="#{msgs['welcome.title']}"/></title>
     </h:head>
     <h:body>
 
         <h:form>
-
+            <i>Greeting from @Named bean with current FacesContext Locale</i><br />
             <h:outputLabel value="${greeting.welcome}" /> <br/>
-
+            <br />
+            <i>Greeting from a Bundle injected in an EJB. Isn't aware of the locale change.</i><br/>
             <h:outputLabel value="${greeting.personalizedGreeting}" /><br/>
-
+            <br />
+            <i>Parametrized Greeting from Message Bundle configured in faces-config.xml</i><br />
             <h:outputFormat value="#{msgs['welcome.name']}">
                 <f:param value="Markus" />
             </h:outputFormat>
-            <br/>
-
-               <h:outputLabel value="#{db['welcome.db']}"/><br />
-            
-            
+            <br/><br/>
+            <i>Greeting from DataBaseResourceBundle</i><br />
+            <h:outputLabel value="#{db['welcome.db']}"/><br />
+            <br />
+            <br />
+            <b>Language switch via valueChangeListener</b><br />
             <h:panelGrid columns="2">
                 <h:outputLabel value="#{msgs['welcome.language']}"/><br />
-
                 <h:selectOneMenu value="#{languageSwitch.localeCode}" onchange="submit()"
                                  valueChangeListener="#{languageSwitch.countryLocaleCodeChanged}">
                     <f:selectItems value="#{languageSwitch.countriesInMap}" /> 
                 </h:selectOneMenu>
-
             </h:panelGrid>
-
+            <br />
+            <b>Language switch via ocp soft rewrite</b><br />
+            <a href="/Bundle-Provider-Tricks/de/index.xhtml">DE</a>
+            <a href="/Bundle-Provider-Tricks/en/index.xhtml">EN</a>
 
         </h:form>
-
-
         <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
     </h:body>
 </html>
 

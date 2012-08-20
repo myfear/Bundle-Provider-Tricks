@@ -13,9 +13,10 @@ import net.eisele.example.resourcebundletricks.bundles.MessageBundle;
 @Stateless
 public class Greeter {
 
+    // Does this work? 
     @Inject
     @MessageBundle
-    private ResourceBundle messages;
+    private transient ResourceBundle messages;
 
     public String greet(String name) {
         String pattern = messages.getString("welcome.name");

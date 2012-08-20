@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
@@ -22,6 +24,7 @@ public class LanguageSwitch implements Serializable {
     private static final long serialVersionUID = 1L;
     private String localeCode;
     private final static Map<String, Object> countries;
+    static final Logger LOGGER = Logger.getLogger(LanguageSwitch.class.getName());
 
     static {
         Map<String, Object> buildCountries = new LinkedHashMap<String, Object>();
@@ -54,7 +57,9 @@ public class LanguageSwitch implements Serializable {
      * @param localeCode
      */
     public void setLocaleCode(String localeCode) {
+        LOGGER.log(Level.INFO, "setLocaleCode {0}", localeCode.toString());
         this.localeCode = localeCode;
+        changeLocaleCode(localeCode);
     }
 
     /**
@@ -64,12 +69,19 @@ public class LanguageSwitch implements Serializable {
      */
     public void countryLocaleCodeChanged(ValueChangeEvent e) {
         String newLocaleValue = e.getNewValue().toString();
+        LOGGER.log(Level.INFO, "New Locale {0}", newLocaleValue);
+        changeLocaleCode(newLocaleValue);
+
+    }
+
+    private void changeLocaleCode(String localCode) {
         //loop country map to compare the locale code
         for (Map.Entry<String, Object> entry : countries.entrySet()) {
-            if (entry.getValue().toString().equals(newLocaleValue)) {
+            if (entry.getValue().toString().equals(localCode)) {
                 FacesContext.getCurrentInstance()
                         .getViewRoot().setLocale((Locale) entry.getValue());
             }
         }
+
     }
 }

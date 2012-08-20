@@ -3,7 +3,6 @@ package net.eisele.example.resourcebundletricks.domain;
 import java.util.Locale;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
-import javax.ejb.Startup;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -12,7 +11,7 @@ import javax.persistence.PersistenceContext;
  * @author eiselem
  */
 @Singleton
-@Startup
+//@Startup 
 public class PreLoader {
 
     @PersistenceContext
