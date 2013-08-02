@@ -91,7 +91,7 @@ public class DatabaseResourceBundle extends ResourceBundle {
             @Override
             protected Object[][] getContents() {
                 TypedQuery<ResourceEntity> query = _entityManager.createNamedQuery("ResourceEntity.findForLocale", ResourceEntity.class);
-                query.setParameter("locale", locale);
+                query.setParameter("locale", locale.getLanguage());
 
                 List<ResourceEntity> resources = query.getResultList();
 

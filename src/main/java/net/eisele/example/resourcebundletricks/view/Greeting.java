@@ -6,6 +6,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import net.eisele.example.resourcebundletricks.business.Greeter;
+import net.eisele.example.resourcebundletricks.domain.ResourceEntity;
 
 /**
  *
@@ -17,6 +18,8 @@ public class Greeting {
 
     @EJB
     Greeter g;
+    
+    protected ResourceEntity re = new ResourceEntity();
 
     public String getWelcome() {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -26,5 +29,13 @@ public class Greeting {
 
     public String getPersonalizedGreeting() {
         return g.greet("Markus");
+    }
+    
+    public ResourceEntity getResourceEntity() {
+      return re;
+    }
+
+    public void setResourceEntity(ResourceEntity re) {
+      this.re = re;
     }
 }
