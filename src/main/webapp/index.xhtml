@@ -32,10 +32,16 @@
                     <f:selectItems value="#{languageSwitch.countriesInMap}" /> 
                 </h:selectOneMenu>
             </h:panelGrid>
+            <b>Try to insert a string less than 10 chars and press send button...</b><br />
+            <h:inputText id="value" value="#{greeting.resourceEntity.value}" binding="#{value}"/>
+            <h:message for="value" />
+            <br/>
+            <input type="submit" value="Send"/>
             <br />
             <b>Language switch via ocp soft rewrite</b><br />
-            <a href="/Bundle-Provider-Tricks/de/index.xhtml">DE</a>
-            <a href="/Bundle-Provider-Tricks/en/index.xhtml">EN</a>
+            <a href="/resource-bundle-tricks/de/index.xhtml">DE</a>
+            <a href="/resource-bundle-tricks/en/index.xhtml">EN</a>
+            <a href="/resource-bundle-tricks/it/index.xhtml">IT</a>
 
         </h:form>
         <br />

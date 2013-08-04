@@ -7,22 +7,22 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
     
-    <application>
-        <locale-config>
-            <supported-locale>en</supported-locale>
-        </locale-config>
-        <resource-bundle>
-            <base-name>Messages</base-name>
-            <var>msgs</var>
-        </resource-bundle>
-        <resource-bundle>
-            <base-name>Errors</base-name>
-            <var>errs</var>
-        </resource-bundle>
-        <resource-bundle>
-            <base-name>net.eisele.example.resourcebundletricks.bundles.DatabaseResourceBundle</base-name>
-            <var>db</var>
-        </resource-bundle>
-    </application> 
+  <application>
+    <locale-config>
+      <supported-locale>en</supported-locale>
+    </locale-config>
+    <resource-bundle>
+      <base-name>Messages</base-name>
+      <var>msgs</var>
+    </resource-bundle>
+    <resource-bundle>
+      <base-name>Errors</base-name>
+      <var>errs</var>
+    </resource-bundle>
+    <resource-bundle>
+      <base-name>net.eisele.example.resourcebundletricks.bundles.DatabaseResourceBundle</base-name>
+      <var>db</var>
+    </resource-bundle>
+  </application> 
     
-    </faces-config>
+</faces-config>

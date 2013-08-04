@@ -42,6 +42,11 @@ public class DatabaseResourceBundle extends ResourceBundle {
                 FacesContext.getCurrentInstance().getViewRoot().getLocale(), DB_CONTROL));
     }
 
+    public DatabaseResourceBundle(Locale locale) {
+        LOGGER.log(Level.FINE, "DatabaseResourceBundle(Locale locale)");
+        setParent(ResourceBundle.getBundle(BUNDLE_NAME, locale, DB_CONTROL));
+    }
+
     @Override
     protected Object handleGetObject(String key) {
         LOGGER.log(Level.FINE, "handleGetObject() Locale {0} Key: {1} ", new Object[]{locale.toString(), key});
@@ -91,7 +96,7 @@ public class DatabaseResourceBundle extends ResourceBundle {
             @Override
             protected Object[][] getContents() {
                 TypedQuery<ResourceEntity> query = _entityManager.createNamedQuery("ResourceEntity.findForLocale", ResourceEntity.class);
-                query.setParameter("locale", locale);
+                query.setParameter("locale", locale.getLanguage());
 
                 List<ResourceEntity> resources = query.getResultList();
 
