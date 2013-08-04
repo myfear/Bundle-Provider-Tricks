@@ -11,7 +11,6 @@
     <locale-config>
       <supported-locale>en</supported-locale>
     </locale-config>
-    <message-bundle>net.eisele.example.resourcebundletricks.bundles.DatabaseResourceBundle</message-bundle>
     <resource-bundle>
       <base-name>Messages</base-name>
       <var>msgs</var>
