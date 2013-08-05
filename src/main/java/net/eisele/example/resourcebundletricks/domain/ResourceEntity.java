@@ -1,7 +1,6 @@
 package net.eisele.example.resourcebundletricks.domain;
 
 import java.io.Serializable;
-import java.util.Locale;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -27,10 +27,11 @@ public class ResourceEntity implements Serializable {
     private Long id;
     @Column(name = "i18n_key")
     private String key;
+    @Size(min = 10)
     @Column(name = "i18n_value")
     private String value;
     @Column(name = "i18n_locale")
-    private Locale locale;
+    private String locale;
 
     public Long getId() {
         return id;
@@ -56,11 +57,11 @@ public class ResourceEntity implements Serializable {
         this.value = value;
     }
 
-    public Locale getLocale() {
+    public String getLocale() {
         return locale;
     }
 
-    public void setLocale(Locale locale) {
+    public void setLocale(String locale) {
         this.locale = locale;
     }
 

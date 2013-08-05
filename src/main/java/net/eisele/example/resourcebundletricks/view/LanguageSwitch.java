@@ -30,6 +30,7 @@ public class LanguageSwitch implements Serializable {
         Map<String, Object> buildCountries = new LinkedHashMap<String, Object>();
         buildCountries.put("English", Locale.ENGLISH);
         buildCountries.put("German", Locale.GERMAN);
+        buildCountries.put("Italian", Locale.ITALIAN);
         countries = Collections.unmodifiableMap(buildCountries);
     }
 
